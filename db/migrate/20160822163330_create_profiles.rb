@@ -1,7 +1,7 @@
 class CreateProfiles < ActiveRecord::Migration[5.0]
   def change
     create_table :profiles do |t|
-      t.integer :user_id
+      t.references :user_id, foreign_key: true
       t.string :dj_name
       t.string :bio
       t.string :soundcloud_link
