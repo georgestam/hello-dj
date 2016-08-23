@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160822163330) do
+ActiveRecord::Schema.define(version: 20160822164747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "profile_id"
+    t.date     "date"
+    t.string   "booking_address"
+    t.time     "time"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["profile_id"], name: "index_bookings_on_profile_id", using: :btree
+    t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
@@ -23,11 +35,16 @@ ActiveRecord::Schema.define(version: 20160822163330) do
     t.integer  "price_hour"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
+    t.string   "email"
     t.string   "encrypted_password",     default: "", null: false
+    t.string   "full_name"
+    t.string   "address"
+    t.boolean  "dj"
+    t.string   "user_picture"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -42,4 +59,6 @@ ActiveRecord::Schema.define(version: 20160822163330) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "bookings", "users"
+  add_foreign_key "profiles", "users"
 end
