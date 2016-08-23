@@ -8,6 +8,7 @@ class BookingsController < ApplicationController
 
   def new
     @booking = Booking.new
+    @booking.profile = Profile.find(params[:profile_id])
   end
 
   def edit
@@ -20,6 +21,8 @@ class BookingsController < ApplicationController
 
   def create
     @booking = Booking.new(booking_params)
+    @booking.profile = Profile.find(params[:profile_id])
+    @booking.user = current_user
     if @booking.save
       redirect_to booking_path(@booking)
     else
