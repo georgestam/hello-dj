@@ -1,0 +1,7 @@
+<%= simple_form_for(@profile) do |f| %>
+    <%= f.input :dj_name, placeholder: "David Guetta" %>
+    <%= f.input :bio, placeholder: "I started to DJ 10 years ago ..." %>
+    <%= f.input :soundcloud_link, placeholder: "https://soundcloud.com/davidguetta" %>
+    <%= f.input :price_hour, placeholder: "200" %>
+    <%= f.button :submit, class: "btn btn-primary"  %>
+<% end %>
