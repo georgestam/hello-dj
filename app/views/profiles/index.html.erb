@@ -1,15 +1,24 @@
-<h3>All profiles:</h3>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg');">
+  <div class="banner-content">
+    <h1 class="text-center">Find a DJ</h1>
+  </div>
+</div>
 
-<div class="container">
+
+<div class="container padded">
   <div class="row">
     <% @profiles.each do |profile| %>
-      <div>
-        <p>DJ: <%=profile.dj_name%> - <%=profile.bio%> </p>
-        <%= link_to "More Info", profile_path(profile)  , :class => "btn btn-danger" %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg');">
+        </div>
+        <div class="row">
+          <p class="card-title text-center"><%=link_to profile.dj_name, profile_path(profile)%></p>
+        </div>
       </div>
     <% end %>
   </div>
 </div>
+
 
 
 
