@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   end
 
   resources :profiles, only: [:index, :show, :new, :create, :edit, :update, :destroy]
+
 end
