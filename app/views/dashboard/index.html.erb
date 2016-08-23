@@ -1,0 +1,14 @@
+
+<p>Logged in as: <%= current_user.email %></p>
+<p>Your Bookings:</p>
+<% current_user.bookings.each do |booking| %>
+Date:<%= booking.date %>
+Time:<%= booking.time %>
+DJ:<%= booking.profile.dj_name %>
+<% end %>
+
+
+<p>Your DJ Profiles:<%= current_user.profiles %></p>
+
+
+
