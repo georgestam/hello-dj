@@ -1,13 +1,16 @@
 class ProfilesController < ApplicationController
-
+before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
+    @profiles = Profile.all
   end
 
   def show
+
   end
 
   def new
+    @profile = Profile.new
   end
 
   def create
@@ -20,12 +23,18 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
+
+    @profile.update(profile_params)
+    redirect_to profile_path(@profile)
   end
 
   def destroy
+
+    @profile.destroy
   end
 
 private
