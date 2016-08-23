@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+      <h4>Add a review for <%= @booking.booking_address %></h4>
+      <%= simple_form_for [@booking, @review] do |f| %>
+      <%= f.input :description, placeholder: "Amazing!" %>
+       <%= f.input :rating, collection: Review::RATINGS, prompt: "1 to 5" %>
+      <%= f.submit "submit", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

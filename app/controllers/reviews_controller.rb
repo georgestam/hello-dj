@@ -1,26 +1,34 @@
 class ReviewsController < ApplicationController
 
+  before_action :set_booking
+
+  
   def show
     @review = Review.find(params[:id])
   end
 
   def new
-    @review = Review.new(
+    @review = @booking.reviews.build
   end
 
   def create
     @booking.find(params[:booking_id])
     @review = Review.new(review_params)
-    if @review.save
-      redirect_to booking_path(@booking)
-    else
-      render :new
-    end
+      if @review.save
+        redirect_to booking_path(@booking)
+      else
+        render :new
+      end
   end
 
-end
+  private
 
+  def set_booking
+    @booking = Booking.find(params[:booking_id])
+  end
 
-def review_params
-  params.require(:review).permit(:description, :rating)
+  def review_params
+    params.require(:review).permit(:description, :rating)
+  end
+
 end
