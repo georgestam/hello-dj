@@ -9,7 +9,7 @@
 require 'faker'
 
 10.times do
-  User.create(
+  User.create!(
     password: Faker::Internet.password,
     full_name: Faker::Company.name,
     email: Faker::Internet.email,
@@ -17,20 +17,22 @@ require 'faker'
   )
 end
 
-prices = ["100", "125", "150", "175", "200"]
 
 5.times do |i|
-  i = rand(0..4)
-  Profile.create(
+  Profile.create!(
     dj_name: Faker::Internet.user_name,
+    bio: Faker::Hipster.sentence(3, true, 4),
     soundcloud_link: Faker::Internet.url,
-    price_hour: prices[i],
+    price_hour: ["100", "125", "150", "175", "200"].sample,
+    user_id: [1,2,3,4,5].sample
   )
 end
 
 5.times do
-  Booking.create(
+  Booking.create!(
     date: Faker::Date.forward(200),
+    user_id: [1,2,3,4,5].sample,
+    time: Time.now,
     booking_address: Faker::Address.street_address,
   )
 end
