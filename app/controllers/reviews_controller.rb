@@ -21,6 +21,6 @@ class ReviewsController < ApplicationController
 end
 
 
-def cocktail_params
+def review_params
   params.require(:review).permit(:description, :rating)
 end
