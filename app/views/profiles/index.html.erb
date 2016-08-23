@@ -1,13 +1,15 @@
 <h3>All profiles:</h3>
-  </div>
-  <% @profiles.each do |r| %>
-  <div class="container">
+
+<div class="container">
   <div class="row">
-  <div class="col-sm-6 col-lg-3 ">
-  <p>DJ: <%=r.dj_name%> - <%=r.bio%></p>
+    <% @profiles.each do |profile| %>
+      <div>
+        <p>DJ: <%=profile.dj_name%> - <%=profile.bio%> </p>
+        <%= link_to "More Info", profile_path(profile)  , :class => "btn btn-danger" %>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 
-  </div>
-  </div>
-  </div>
-  <% end %>
+

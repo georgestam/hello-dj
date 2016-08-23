@@ -1,1 +1,28 @@
 <h1>Show Profile</h1>
+
+  </div>
+
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-6 col-lg-3 ">
+  <p>PROFILE ID:<%= @profile.id %></p>
+  <p>LINKED USER:<%= @profile.user %></p>
+  <p>LINKED USER ID:<%= @profile.user.id %></p>
+  <p>DJ NAME: <%= @profile.dj_name %></p>
+  <p>BIO: <%= @profile.bio %></p>
+  <p>SOUNDCLOUD LINK:<%= @profile.soundcloud_link %></p>
+  <p>PRICE P/H: £<%= @profile.price_hour %></p>
+
+<br>
+<br>
+<p>TODO: THIS Delete link SHOULD ONLY SHOW IF THE LINKED USER IS LOGGED IN</p>
+<%= link_to "Delete ", profile_path(@profile), :class => "btn btn-danger",
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+
+  <%= link_to "Edit ", edit_profile_path(@profile), :class => "btn btn-danger" %>
+
+  </div>
+  </div>
+  </div>
+
