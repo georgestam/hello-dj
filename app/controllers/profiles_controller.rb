@@ -14,11 +14,13 @@ before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def create
     @profile = Profile.new(profile_params)
+    @profile.user = current_user
     if @profile.save
       redirect_to profile_path(@profile)
     else
       render :new
     end
+    # @profile.user = current_user
   end
 
   def edit
@@ -40,6 +42,9 @@ private
   end
 
   def profile_params
-    params.require(:profile).permit(:dj_name, :soundcloud_link, :price_hour)
+    params.require(:profile).permit(:dj_name, :soundcloud_link, :price_hour, :bio)
   end
 end
+
+
+
