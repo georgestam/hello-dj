@@ -13,6 +13,6 @@ class User < ApplicationRecord
   validates :full_name, presence: true
   validates :email, presence: true, uniqueness: true
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
-  validates :dj, presence: true
+
 
 end
