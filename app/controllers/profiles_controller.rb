@@ -6,7 +6,6 @@ before_action :set_profile, only: [:show, :edit, :update, :destroy]
   end
 
   def show
-
   end
 
   def new
@@ -23,17 +22,14 @@ before_action :set_profile, only: [:show, :edit, :update, :destroy]
   end
 
   def edit
-
   end
 
   def update
-
     @profile.update(profile_params)
     redirect_to profile_path(@profile)
   end
 
   def destroy
-
     @profile.destroy
   end
 
