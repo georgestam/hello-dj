@@ -12,10 +12,13 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.new(review_params)
-    @review.booking = @booking
-    @review.save
-    redirect_to booking_path(@booking)
+    @booking.find(params[:booking_id])
+    @review = Review.new(review_params)
+      if @review.save
+        redirect_to booking_path(@booking)
+      else
+        render :new
+      end
   end
 
   private
