@@ -2,6 +2,11 @@ class ReviewsController < ApplicationController
 
   before_action :set_booking
 
+  
+  def show
+    @review = Review.find(params[:id])
+  end
+
   def new
     @review = @booking.reviews.build
   end
