@@ -1,4 +1,4 @@
-<%= simple_form_for(@booking) do |f| %>
+<%= simple_form_for([ @booking.profile, @booking ]) do |f| %>
     <%= f.input :date, placeholder: "12/09/2016" %>
     <%= f.input :booking_address, placeholder: "Shoreditch" %>
     <%= f.input :time, placeholder: "7pm" %>
