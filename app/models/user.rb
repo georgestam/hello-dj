@@ -10,9 +10,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
 
-  validates :full_name, presence: true
+  validates :full_name, presence: true, on: :update
   validates :email, presence: true, uniqueness: true
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
-  validates :dj, presence: true
+
 
 end
