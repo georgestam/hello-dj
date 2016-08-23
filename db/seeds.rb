@@ -18,98 +18,98 @@ djs = [
   },
    {
     dj_name: "Hardwell",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970764/Hardwell_GerardHenninger_Oct2015_rbcgi5.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
    {
     dj_name: "Martin Garrix",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970764/MartinGarrixpressshot_olw66x.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
    {
     dj_name: "Armin Van Buuren",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970764/Carli_Herme%CC%80s_Unit_C_ytv3xr.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
    {
     dj_name: "Tiësto",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970765/Tiesto1_lem7iq.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
    {
     dj_name: "David Guetta",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970764/med_res_DAVID_GUETTA_by_Ellen_von_Unwerth_NYC_Sept_2014_10-2182_yemtvo.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
    {
     dj_name: "Avicii",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970764/20130721_hotel023_tmxjzj.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
      {
     dj_name: "Afrojack",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970764/Afrojack_Forget_the_world_by_FotoFloor_ciiemy.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
   {
     dj_name: "Skrillex",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970765/SKRILL_1-general_Jason-Nocito_e6aixi.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
    {
     dj_name: "Steve Aoki",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970765/Screen_Shot_2015-09-28_at_10_psiqnq.png",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
    {
     dj_name: "Calvin Harris",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970764/Calvin_Harris_-_General_Press_Shot_grfrab.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
    {
     dj_name: "Oliver Heldens",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970765/OliverHeldens_7578-copy_xjeoqk.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
    {
     dj_name: "Alesso",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970764/alesso-presspic-web_onkr1r.png",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
    {
     dj_name: "W & W",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970764/603416_cyfxps.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
   },
    {
     dj_name: "Dash Berlin",
-    picture: "",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970764/DashBerlin_fdn3nf.jpg",
     bio: "",
     price_hour: 100,
     soundcloud_link: ""
