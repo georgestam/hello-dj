@@ -1,11 +1,4 @@
-class ProfilesController < ApplicationController
-
-
-  def index
-  end
-
-  def show
-  end
+class UsersController < ApplicationController
 
   def new
   end
