@@ -6,34 +6,116 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-require 'faker'
+Profiles.destroy_all
 
-10.times do
-  User.create!(
-    password: Faker::Internet.password,
-    full_name: Faker::Company.name,
-    email: Faker::Internet.email,
-    address: Faker::Address.street_address,
-  )
-end
+djs = [
+  {
+    dj_name: "Dimitri Vegas & Like Mike",
+    picture: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471970765/DVLM_lyze3t.png",
+    bio: "The iconic Belgian party has itself grown over the past decade to become one of the world’s most popular events, though it was in 2010 when brothers Dimitri and Michael Thivaios were first selected to pen the festival’s anthem. World domination slowly but surely followed, for both the brothers and the festival.",
+    price_hour: 100,
+    soundcloud_link: "https://soundcloud.com/dimitrivegasandlikemike"
+  },
+   {
+    dj_name: "Hardwell",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+   {
+    dj_name: "Martin Garrix",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+   {
+    dj_name: "Armin Van Buuren",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+   {
+    dj_name: "Tiësto",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+   {
+    dj_name: "David Guetta",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+   {
+    dj_name: "Avicii",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+     {
+    dj_name: "Afrojack",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+  {
+    dj_name: "Skrillex",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+   {
+    dj_name: "Steve Aoki",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+   {
+    dj_name: "Calvin Harris",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+   {
+    dj_name: "Oliver Heldens",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+   {
+    dj_name: "Alesso",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+   {
+    dj_name: "W & W",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  },
+   {
+    dj_name: "Dash Berlin",
+    picture: "",
+    bio: "",
+    price_hour: 100,
+    soundcloud_link: ""
+  }
 
+  ]
 
-5.times do |i|
-  Profile.create!(
-    dj_name: Faker::Internet.user_name,
-    bio: Faker::Hipster.sentence(3, true, 4),
-    soundcloud_link: Faker::Internet.url,
-    price_hour: ["100", "125", "150", "175", "200"].sample,
-    user_id: [1,2,3,4,5].sample
-  )
-end
-
-5.times do
-  Booking.create!(
-    date: Faker::Date.forward(200),
-    user_id: [1,2,3,4,5].sample,
-    time: Time.now,
-    booking_address: Faker::Address.street_address,
-  )
-end
+  djs.each { |dj| Profile.create(dj) }
 
