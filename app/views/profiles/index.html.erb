@@ -1,17 +1,16 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg');">
   <div class="banner-content">
-    <h1 class="text-center">Find a DJ</h1>
+    <h1 class="text-center">Our DJs</h1>
   </div>
 </div>
 
 <!-- for debugging -->
-Your Search:
+<!-- Your Search:
 city:<%= params[:city] %>
-max price:<%= params[:max_price] %>
+max price:<%= params[:max_price] %> -->
 <!-- for debugging -->
-
-<h3>Our DJs</h3>
-<div id="map" style="width: 100%; height: 200px;"></div>
+<div class="container padded">
+<div id="map" style="width: 100%; height: 200px;">
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).on('ready', function() {
@@ -29,11 +28,13 @@ max price:<%= params[:max_price] %>
     });
   <% end %>
 <% end %>
+</div>
+</div>
 
 <div class="container padded">
   <div class="row">
     <% @profiles.each do |profile| %>
-      <% if params[:max_price] && profile.price_hour < params[:max_price].to_i %>
+      <% if (params[:max_price] || params[:max_price]=="" )&& profile.price_hour < params[:max_price].to_i %>
         <div class="col-xs-12 col-sm-4">
         <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
         <div class="card text-center" style="background-image: url('<%= card_photo %>');">
@@ -46,14 +47,4 @@ max price:<%= params[:max_price] %>
     <% end %>
   </div>
 </div>
-
-
-
-<% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      alert('<%= j @alert_message %>');
-    });
-  <% end %>
-<% end %>
 

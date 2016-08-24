@@ -1,16 +1,12 @@
 <div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg');">
   <div class="banner-content">
-    <h1 class="text-center">Hello DJ</h1>
+    <%= form_tag(profiles_path, :method => "get", id: "search-form", class: "form-inline") do %>
+    <%= text_field_tag :city, nil, :placeholder => "London", :class => "form-control" %>
+    <%= select_tag :max_price, options_for_select([0,100,1000,10000,50000,100000,250000,500000]), :prompt => "Max Price", :class => "form-control"  %>
+    <%= submit_tag "Submit", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
-
-<%= form_tag(profiles_path, :method => "get", id: "search-form", class: "form-inline") do %>
-        <%= text_field_tag :city, nil, :placeholder => "City", :class => "form-control" %>
-        <%= select_tag :max_price, options_for_select([0,100,1000,10000,50000,100000,250000,500000]), :prompt => "Max Price", :class => "form-control"  %>
-        <%= submit_tag "Submit", class: "btn btn-primary" %>
-    <% end %>
-
-
 
    <div class="text-center padded">
       <div class="row">
