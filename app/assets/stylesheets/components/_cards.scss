@@ -4,7 +4,11 @@
   background-size: cover !important;
   color: white;
   position: relative;
-  border-radius: 2px;
+  border-radius: 3px;
+  border-width: 1px;
+  border-color: #E8E8E8;
+  border-style: solid;
+
 }
 .card-user {
   position: absolute;
@@ -41,12 +45,3 @@
 .card-link:hover{
   opacity: 0.1;
 }
-
-.card-title {
-  font-size: 15px;
-  text-transform: uppercase;
-  padding-top: 5px;
-  padding-bottom: 10px;
-}
-
-

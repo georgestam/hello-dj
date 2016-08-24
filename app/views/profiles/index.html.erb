@@ -35,10 +35,11 @@ max price:<%= params[:max_price] %>
     <% @profiles.each do |profile| %>
       <% if params[:max_price] && profile.price_hour < params[:max_price].to_i %>
         <div class="col-xs-12 col-sm-4">
-          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg');">
+        <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
+        <div class="card text-center" style="background-image: url('<%= card_photo %>');">
           </div>
           <div class="row">
-            <p class="card-title text-center"><%=link_to profile.dj_name, profile_path(profile)%></p>
+          <p class="card-title text-center"><%=link_to profile.dj_name, profile_path(profile)%></p>
           </div>
         </div>
       <% end %>
