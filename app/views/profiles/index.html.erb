@@ -9,14 +9,8 @@
   <div class="row">
     <% @profiles.each do |profile| %>
       <div class="col-xs-12 col-sm-4">
-        <div class="card text-center">
-          <% if profile.photo %>
-            <div class="card-header" style="background-image: url('<%= image_path profile.photo%>')">
-            </div>
-          <% else %>
-            <div class="card-header" style="background-image: url('http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg')">
-            </div>
-          <% end %>
+        <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
+        <div class="card text-center" style="background-image: url('<%= card_photo %>');">
           <div class="card-body">
             <%= link_to profile.dj_name, profile_path(profile) %>
           </div>
