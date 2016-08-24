@@ -18,7 +18,7 @@ before_action :set_profile, only: [:show, :edit, :update, :destroy]
     embed_info = client.get('/oembed', :url => track_url)
 
     # print the html for the player widget
-    @url_embed = embed_info['html']
+    @url_embed = embed_info['html'].slice(0).slice(-1)
 
 
   end
