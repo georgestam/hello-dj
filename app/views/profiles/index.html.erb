@@ -5,6 +5,9 @@
 </div>
 
 <!-- for debugging -->
+
+
+
 <!-- Your Search:
 city:<%= params[:city] %>
 max price:<%= params[:max_price] %> -->
@@ -31,12 +34,26 @@ max price:<%= params[:max_price] %> -->
 </div>
 </div>
 
+
+
+
+
+
 <div class="container padded">
   <div class="row">
     <% @profiles.each do |profile| %>
-      <% if params[:max_price] && params[:max_price] != "" %>
-        <% if profile.price_hour < params[:max_price].to_i %>
+    <% distance_away = Geocoder::Calculations.distance_between(Geocoder.coordinates(params[:city]), [profile.user.latitude,profile.user.longitude ]) %>
+
+      <% if params[:max_price] && params[:max_price] != "" && params[:city] && params[:city] != "" %>
+        <% if profile.price_hour < params[:max_price].to_i && distance_away <100 %>
           <div class="col-xs-12 col-sm-4">
+
+
+
+Distance away: <%= distance_away %>
+
+
+
           <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
             <div class="card text-center" style="background-image: url('<%= card_photo %>');">
             </div>
