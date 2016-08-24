@@ -123,8 +123,10 @@ djs = [
     user = User.create!(
       email: Faker::Internet.email,
       password: Faker::Internet.password)
+    photo_url = dj.delete(:photo)
     profile = Profile.new(dj)
     profile.user = user
+    profile.remote_photo_url = photo_url
     profile.save!
     puts "Created profile for #{profile.dj_name}"
   end
