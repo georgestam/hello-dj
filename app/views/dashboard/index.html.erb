@@ -1,25 +1,30 @@
-
-<p>Logged in as: <%= current_user.email %></p>
-<h3>Your Bookings:</h3>
-<% current_user.bookings.each do |booking| %>
-Date:<%= booking.date %>
-Time:<%= booking.time %>
-DJ:<%= booking.profile.dj_name %>
-<br>
-<% end %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg');">
+</div>
 
 
+<div class="container padded">
+  <p>Logged in as: <%= current_user.email %></p>
+  <h4>Your Bookings:</h4>
+  <ul>
+    <% current_user.bookings.each do |booking| %>
+    <li>Date:<%= booking.date %>
+    Time:<%= booking.time %>
+    DJ:<%= booking.profile.dj_name %>
+    </li>
+    <% end %>
+  </ul>
 
-
-<% if current_user.profiles %>
-  <h3>DJ Profiles you have created:</h3>
-  <% current_user.profiles.each do |profile| %>
-  DJ Name:<%= profile.dj_name %>
+  <% if current_user.profiles %>
+    <h4>DJ Profiles you have created:</h4>
+    <ul>
+      <% current_user.profiles.each do |profile| %>
+      <li>DJ Name:<%= profile.dj_name %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>You are currently not regestered as a DJ.<p>
+    <%= link_to "Create DJ Profile", new_profile_path  , :class => "btn btn-danger" %>
   <% end %>
-<% else %>
-  <p>You are currently not regestered as a DJ.<p>
-  <%= link_to "Create DJ Profile", new_profile_path  , :class => "btn btn-danger" %>
-<% end %>
 
-
+</div>
 
