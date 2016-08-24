@@ -4,17 +4,26 @@
   </div>
 </div>
 
+<!-- for debugging -->
+Your Search:
+city:<%= params[:city] %>
+max price:<%= params[:max_price] %>
+<!-- for debugging -->
+
+
 
 <div class="container padded">
   <div class="row">
     <% @profiles.each do |profile| %>
-      <div class="col-xs-12 col-sm-4">
-        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg');">
+      <% if params[:max_price] && profile.price_hour < params[:max_price].to_i %>
+        <div class="col-xs-12 col-sm-4">
+          <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg');">
+          </div>
+          <div class="row">
+            <p class="card-title text-center"><%=link_to profile.dj_name, profile_path(profile)%></p>
+          </div>
         </div>
-        <div class="row">
-          <p class="card-title text-center"><%=link_to profile.dj_name, profile_path(profile)%></p>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
 </div>
