@@ -5,6 +5,15 @@ class ProfilesController < ApplicationController
 
   def index
     @profiles = Profile.all
+
+    @profiles.to_a.reject! { |profile| profile.user.latitude.nil? }
+
+    @hash = Gmaps4rails.build_markers(@profiles) do |profile, marker|
+      marker.lat profile.user.latitude
+      marker.lng profile.user.longitude
+      marker.infowindow profile.dj_name
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
+    end
   end
 
   def show

@@ -4,6 +4,11 @@
   </div>
 </div>
 
+<%= form_tag(profiles_path, :method => "get", id: "search-form", class: "form-inline") do %>
+        <%= text_field_tag :city, nil, :placeholder => "City", :class => "form-control" %>
+        <%= select_tag :max_price, options_for_select([0,100,1000,10000,50000,100000,250000,500000]), :prompt => "Max Price", :class => "form-control"  %>
+        <%= submit_tag "Submit", class: "btn btn-primary" %>
+    <% end %>
 
 
 
