@@ -21,4 +21,6 @@ production:
   SOUND_CLOUD_Client_Secret: "7c1898ca2036066e234c0602a02bcf1b"
 
 
-maps_api_key: AIzaSyB0xAYOTkOhMMh4TcH2WS5lltaNJsoYqPk
+
+GOOGLE_API_SERVER_KEY: "AIzaSyDMg1******************8wxJqE"
+GOOGLE_API_BROWSER_KEY: "Sz1MDgyAaI******************EJ8xwq"
