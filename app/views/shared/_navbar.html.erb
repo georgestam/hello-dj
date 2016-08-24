@@ -39,11 +39,11 @@
             <li>
               <% if current_user && current_user.profiles.any? %>
                 <%= link_to profile_path(current_user.profiles.first) do %>
-                  <i class="fa fa-user"></i> View my profile
+                  <i class="fa fa-user"></i> View DJ profile
                 <% end %>
               <% else %>
                 <%= link_to new_profile_path do %>
-                  <i class="fa fa-user"></i> Create my profile
+                  <i class="fa fa-user"></i> Are you DJ?
                 <% end %>
               <% end %>
             </li>
