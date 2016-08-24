@@ -1,4 +1,12 @@
 
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('background.jpg');">
+  <div class="banner-content">
+    <h1> <%= @profile.dj_name.upcase %></h1>
+    <!-- <p>Very cool stuff, useful and smart</p> -->
+    <!-- <a class="btn btn-primary btn-lg">GET IT</a> -->
+  </div>
+</div>
+
 
 
 <div class="container ">
@@ -6,43 +14,47 @@
 
     <div class="col-sm-4 ">
 
-    <div class="text-center">
+      <div class="text-center">
 
-      <h1><%= @profile.dj_name.upcase %> </h1>
-      <img src="https://unsplash.it/200/200" alt="">
-    </div>
+        <h1><%= @profile.dj_name.upcase %> </h1>
+        <img src="https://unsplash.it/200/200" alt="" class="text-center avatar-square ">
 
-    </div>
-
-    <div class="col-sm-4">
-
-      <p>BIO: <%= @profile.bio %></p>
-
-      <p>PRICE P/H: £<%= @profile.price_hour %></p>
-      <p>Book me: from £<%= @profile.price_hour %> to </p>
-
-      <p>PROFILE ID:<%= @profile.id %></p>
-      <!-- <p>LINKED USER:<%= @profile.user %></p>  we should add name, but we don't have time!-->
-      <p>LINKED USER ID:<%= @profile.user.id %></p>
-
-      <div class="">
-        <p>TODO: THIS Delete link SHOULD ONLY SHOW IF THE LINKED USER IS LOGGED IN</p>
-        <%= link_to "Delete ", profile_path(@profile), :class => "btn btn-danger",
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
-
-          <%= link_to "Edit ", edit_profile_path(@profile), :class => "btn btn-danger" %>
       </div>
 
-      <% @url_embed %>
+      <div class="text-center">
+
+        <% if @profile.user == current_user %>
+
+          <%= link_to "Delete ", profile_path(@profile), :class => "btn btn-danger",
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+
+            <%= link_to "Edit ", edit_profile_path(@profile), :class => "btn btn-danger" %>
+
+      </div>
+       <% end %>
+
+
+    </div>
+
+    <div class="col-sm-4" id="description">
+
+      <p> <strong>Bio:</strong> </p>
+      <p><%= @profile.bio %></p>
+
+      <p>  <strong>£<%= @profile.price_hour %> </strong> x hour </p>
+
+       <%= link_to "book-me ", "#" , :class => "btn btn-success" %>
+
+      <p><% @profile.id %></p>
+      <!-- <p>LINKED USER:<%= @profile.user %></p>  we should add name, but we don't have time!-->
+      <p><% @profile.user.id %></p>
+
     </div>
 
     <div class="col-sm-4">
-      <iframe width="100%" height="400" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/272661310&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true"></iframe>
 
-      <iframe width=\"100%\" height=\"400\" scrolling=\"no\" frameborder=\"no\" src=\"https://w.soundcloud.com/player/?visual=true&url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F272661310&show_artwork=true&client_id=6298d24e3c36a353530babe223ece02a\"></iframe>
-
-       <%=  @url_embed.inpect %>
+       <%=  @url_embed.html_safe %>
 
     </div>
   </div>

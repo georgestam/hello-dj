@@ -11,14 +11,16 @@ before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
 
     # create a client object with your app credentials
-    client = Soundcloud.new(:client_id => '6298d24e3c36a353530babe223ece02a')
+    client = Soundcloud.new(:client_id => ENV["SOUND_CLOUD_CLIENT_app_id"])
 
     # get a tracks oembed data
     track_url = @profile.soundcloud_link
     embed_info = client.get('/oembed', :url => track_url)
 
     # print the html for the player widget
-    @url_embed = embed_info['html'].slice(0).slice(-1)
+    @url_embed = embed_info['html']
+
+    # .slice(0).slice(-1)
 
 
   end
