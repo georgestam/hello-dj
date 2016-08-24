@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
-before_action :set_profile, only: [:show, :edit, :update, :destroy]
+
+  skip_before_action :authenticate_user!, only: [ :show, :index ]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
     @profiles = Profile.all
@@ -42,9 +44,8 @@ private
   end
 
   def profile_params
-    params.require(:profile).permit(:dj_name, :soundcloud_link, :price_hour, :bio)
+    params.require(:profile).permit(:dj_name, :soundcloud_link, :price_hour, :bio, :photo, :photo_cache)
   end
 end
-
 
 
