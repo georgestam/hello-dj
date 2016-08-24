@@ -37,8 +37,14 @@
               <% end %>
             </li>
             <li>
-              <%= link_to new_profile_path do %>
-                <i class="fa fa-user"></i> <%= t(".profile", default: "are you a DJ?") %>
+              <% if current_user && current_user.profiles.any? %>
+                <%= link_to profile_path(current_user.profiles.first) do %>
+                  <i class="fa fa-user"></i> View my profile
+                <% end %>
+              <% else %>
+                <%= link_to new_profile_path do %>
+                  <i class="fa fa-user"></i> Create my profile
+                <% end %>
               <% end %>
             </li>
             <li>
@@ -63,7 +69,7 @@
     <% end %>
 
     <!-- Button (call-to-action) -->
-    <%= link_to t(".top_call_to_action", default: "Post stuff"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
+    <%= link_to t(".top_call_to_action", default: "Subscribe"), "#", class: "navbar-wagon-item navbar-wagon-button btn" %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
