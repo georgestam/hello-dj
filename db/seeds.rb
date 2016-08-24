@@ -122,7 +122,8 @@ djs = [
   djs.each do |dj|
     user = User.create!(
       email: Faker::Internet.email,
-      password: Faker::Internet.password)
+      password: Faker::Internet.password,
+      address: ["London","Bristol","Manchester,UK"].sample)
     profile = Profile.new(dj)
     profile.user = user
     profile.save!
