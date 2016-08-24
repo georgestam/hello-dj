@@ -3,5 +3,7 @@
     <%= f.input :bio, placeholder: "I started to DJ 10 years ago ..." %>
     <%= f.input :soundcloud_link, placeholder: "https://soundcloud.com/davidguetta" %>
     <%= f.input :price_hour, placeholder: "200" %>
+    <%= f.input :photo %>
+    <%= f.input :photo_cache, as: :hidden %>
     <%= f.button :submit, class: "btn btn-primary"  %>
 <% end %>
