@@ -1,31 +1,61 @@
-<h1>Show Profile</h1>
 
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('background.jpg');">
+  <div class="banner-content">
+    <h1> <%= @profile.dj_name.upcase %></h1>
+    <!-- <p>Very cool stuff, useful and smart</p> -->
+    <!-- <a class="btn btn-primary btn-lg">GET IT</a> -->
   </div>
+</div>
 
-  <div class="container">
+<div class="container ">
   <div class="row">
-  <div class="col-sm-6 col-lg-3 ">
-  <div class="card text-center"><%= cl_image_tag @profile.photo %>
-  </div>
 
-  <p>PROFILE ID:<%= @profile.id %></p>
-  <p>LINKED USER:<%= @profile.user %></p>
-  <p>LINKED USER ID:<%= @profile.user.id %></p>
-  <p>DJ NAME: <%= @profile.dj_name %></p>
-  <p>BIO: <%= @profile.bio %></p>
-  <p>SOUNDCLOUD LINK:<%= @profile.soundcloud_link %></p>
-  <p>PRICE P/H: £<%= @profile.price_hour %></p>
+    <div class="col-sm-4 ">
 
-<br>
-<br>
-<p>TODO: THIS Delete link SHOULD ONLY SHOW IF THE LINKED USER IS LOGGED IN</p>
-<%= link_to "Delete ", profile_path(@profile), :class => "btn btn-danger",
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
+      <div class="text-center">
 
-  <%= link_to "Edit ", edit_profile_path(@profile), :class => "btn btn-danger" %>
+        <h1><%= @profile.dj_name.upcase %> </h1>
+        <div class="card text-center avatar-square"><%= cl_image_tag @profile.photo %>
+       </div>
 
+      </div>
+
+      <div class="text-center">
+
+        <% if @profile.user == current_user %>
+
+          <%= link_to "Delete ", profile_path(@profile), :class => "btn btn-danger",
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+
+            <%= link_to "Edit ", edit_profile_path(@profile), :class => "btn btn-danger" %>
+
+      </div>
+       <% end %>
+
+
+    </div>
+
+    <div class="col-sm-4" id="description">
+
+      <p> <strong>Bio:</strong> </p>
+      <p><%= @profile.bio %></p>
+
+      <p>  <strong>£<%= @profile.price_hour %> </strong> x hour </p>
+
+       <%= link_to "book-me ", "#" , :class => "btn btn-success" %>
+
+      <p><% @profile.id %></p>
+      <!-- <p>LINKED USER:<%= @profile.user %></p>  we should add name, but we don't have time!-->
+      <p><% @profile.user.id %></p>
+
+    </div>
+
+    <div class="col-sm-4">
+
+       <%=  @url_embed.html_safe %>
+
+    </div>
   </div>
-  </div>
-  </div>
+</div>
 

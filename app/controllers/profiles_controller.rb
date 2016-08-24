@@ -1,3 +1,5 @@
+require 'soundcloud'
+
 class ProfilesController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [ :show, :index ]
@@ -17,6 +19,21 @@ class ProfilesController < ApplicationController
   end
 
   def show
+
+
+    # create a client object with your app credentials
+    client = Soundcloud.new(:client_id => ENV["SOUND_CLOUD_CLIENT_app_id"])
+
+    # get a tracks oembed data
+    track_url = @profile.soundcloud_link
+    embed_info = client.get('/oembed', :url => track_url)
+
+    # print the html for the player widget
+    @url_embed = embed_info['html']
+
+    # .slice(0).slice(-1)
+
+
   end
 
   def new
