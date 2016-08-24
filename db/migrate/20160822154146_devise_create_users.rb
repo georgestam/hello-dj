@@ -7,7 +7,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
 
       # Added by us to customise user model
       t.string :full_name
-      t.string :email
       t.string :address
       t.boolean :dj
       t.string :user_picture
