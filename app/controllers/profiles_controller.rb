@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
     @min_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[0] : 0
     @max_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[1] : 10000000000
     @max_distance = params[:max_distance] && params[:max_distance] !="" ? params[:max_distance] : 10000000000
-    @your_location = params[:your_location] && params[:your_location].to_i !="" ? params[:your_location] : "London"
+    @your_location = params[:your_location] && params[:your_location] !="" ? params[:your_location] : "London"
 
     @profiles = Profile.all
 

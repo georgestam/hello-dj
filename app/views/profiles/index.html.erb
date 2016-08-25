@@ -51,9 +51,13 @@ You searched within <%= @max_distance %> km of <%= @your_location %> With a pric
 
         <% if profile.price_hour < @max_price && profile.price_hour > @min_price && distance_away < @max_distance.to_f  %>
           <div class="col-xs-12 col-sm-4">
-          Distance away: <%= distance_away %>
+
+
           <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
             <div class="card text-center" style="background-image: url('<%= card_photo %>');">
+              <div class="badge badge-blue"><%= distance_away.round %>km</div>
+              <div class="badge badge-red lower">£<%= profile.price_hour/1000 %>k</div>
+
             </div>
             <div class="row">
             <p class="card-title text-center"><%=link_to profile.dj_name, profile_path(profile)%></p>
