@@ -24,8 +24,9 @@ gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"
 
-source 'https://rails-assets.org' do
+source 'https://rails-assets.org' do # bower
   gem "rails-assets-underscore"
+  gem "rails-assets-seiyria-bootstrap-slider"
 end
 
 group :development, :test do

@@ -6,6 +6,13 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
   def index
+
+    # extract search parameters and use defualts if not entered by user
+    @min_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[0] : 0
+    @max_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[1] : 10000000000
+    @max_distance = params[:max_distance] && params[:max_distance] !="" ? params[:max_distance] : 10000000000
+    @your_location = params[:your_location] && params[:your_location] !="" ? params[:your_location] : "London"
+
     @profiles = Profile.all
 
     @profiles.to_a.reject! { |profile| profile.user.latitude.nil? }

@@ -123,7 +123,7 @@ djs = [
     user = User.create!(
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    address: ["London","Bristol","Manchester,UK"].sample)
+    address: ["TS18 1RH","MK19 6DX","PL33 9AP","BN9 9XE","OX28 6LF","IV49 9AQ","B15 2RU","EH20 9SZ","BT57 8RP","WA3 6GR","IP22 1LJ","LS17 6LJ","LL44 2EA","AB21 9PN","CO8 5LL","DN9 1LG","PH15 2NJ","YO90 1UU"].sample)
     photo_url = dj.delete(:photo)
     profile = Profile.new(dj)
     profile.user = user
