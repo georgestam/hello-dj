@@ -3,24 +3,64 @@
 
 
 <div class="container padded">
-  <p>Logged in as: <%= current_user.email %></p>
-  <h4>Your Bookings:</h4>
-  <ul>
+  <div class='text-center'>
+     <p> Welcome <%= current_user.email %>!</p>
+  </div>
+
+  <h4>Your Bookings as a user:</h4>
     <% current_user.bookings.each do |booking| %>
-    <li>Date:<%= booking.date %>
-    Time:<%= booking.time %>
-    DJ:<%= booking.profile.dj_name %>
-    </li>
-    <% end %>
-  </ul>
+
+      <% card_photo = booking.profile.photo.file ? cl_image_path(booking.profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
+
+
+      <div class="product">
+        <div class='product-upvote'>
+          <!-- <div class="product-arrow"></div> -->
+          <div class='product-count'><%= booking.date %></div>
+        </div>
+        <img src='<%= card_photo %>' class="product-image hidden-xs">
+        <div class='product-body'>
+          <h3><%= booking.profile.dj_name %></h3>
+          <p>Booking start on <strong> <%= booking.date %> </strong> at <strong> <%= booking.time %> </strong> </p>
+          <p><%= booking.booking_address %></p>
+        </div>
+        <ul class="list-inline hidden-sm hidden-xs">
+          <li class = "product-controls"><a href=""><i class="fa fa-heart"></i></a></li>
+          <li class = "product-controls"><a href=""><i class="fa fa-share"></i></a></li>
+          <li class = "product-controls"><a href=""><i class="fa fa-star"></i></a></li>
+          <li><a href="#" class="btn btn-danger">Write Review!</a></li>
+        </ul>
+      </div>
+
+      <% end %>
 
   <% if current_user.profiles %>
-    <h4>DJ Profiles you have created:</h4>
-    <ul>
+    <h4>Your Bookings as a DJ:</h4>
       <% current_user.profiles.each do |profile| %>
-      <li>DJ Name:<%= profile.dj_name %></li>
+
+      <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
+
+      <div class="product">
+        <div class='product-upvote'>
+          <!-- <div class="product-arrow"></div> -->
+          <% profile.bookings.each do |booking| %>
+            <div class='product-count'><%= booking.date %></div>
+              </div>
+              <img src='<%= card_photo %>' class="product-image hidden-xs">
+              <div class='product-body'>
+                <h3><%= booking.profile.dj_name %></h3>
+                <p>Booking start on <strong> <%= booking.date %> </strong> at <strong> <%= booking.time %> </strong> </p>
+                <p><%= booking.booking_address %></p>
+              </div>
+           <ul class="list-inline hidden-sm hidden-xs">
+            <li class = "product-controls"><a href=""><i class="fa fa-heart"></i></a></li>
+            <li class = "product-controls"><a href=""><i class="fa fa-share"></i></a></li>
+            <li class = "product-controls"><a href=""><i class="fa fa-star"></i></a></li>
+            <li><a href="#" class="btn btn-danger">Write Review!</a></li>
+          </ul>
+            </div>
+        <% end %>
       <% end %>
-    </ul>
   <% else %>
     <p>You are currently not regestered as a DJ.<p>
     <%= link_to "Create DJ Profile", new_profile_path  , :class => "btn btn-danger" %>
