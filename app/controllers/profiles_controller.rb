@@ -26,7 +26,12 @@ class ProfilesController < ApplicationController
   end
 
   def show
-
+    # make map pin work for individual dj profile
+    @hash = Gmaps4rails.build_markers(@profile) do |profile, marker|
+      marker.lat profile.user.latitude
+      marker.lng profile.user.longitude
+      marker.infowindow profile.dj_name
+    end
 
     # create a client object with your app credentials
     client = Soundcloud.new(:client_id => ENV["SOUND_CLOUD_CLIENT_app_id"])

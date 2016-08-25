@@ -4,28 +4,38 @@
   <div class="banner-content">
     <h1>Hello DJ</h1>
     <p>DJ booking made easy.</p>
-    <%= form_tag(profiles_path, :method => "get", id: "search-form", class: "form-inline") do %>
-    <%= text_field_tag :your_location, nil, :placeholder => "London", :class => "form-control" %>
-    <%= select_tag :max_distance, options_for_select([0,10,25,50,100,250]), :prompt => "Search Distance", :class => "form-control"  %>
 
-Budget:
-<input id="ex6" type="text"
-  name="price_range"
-  data-provide="slider"
-
-    data-slider-min="0"
-    data-slider-max="500000"
-    data-slider-range="true"
-    data-slider-step="10000"
-    data-slider-value="[150000,350000]"
-    data-slider-tooltip="show"
-"/>
-    <span id="budgetReadout"><span id="ex6SliderVal">£150k - £350k </span></span>
-    <%= submit_tag "Submit", class: "btn btn-primary" %>
-    <% end %>
   </div>
 </div>
 
+<!-- Search form -->
+<div class="search-box">
+
+<%= form_tag(profiles_path, :method => "get", id: "search-form", class: "form-inline") do %>
+  <div class="search-box-item">
+  <%= text_field_tag :your_location, nil, :placeholder => "London", :class => "form-control" %>
+  <%= select_tag :max_distance, options_for_select([0,10,25,50,100,250]), :prompt => "Search Distance", :class => "form-control"  %>
+<!--   </div>
+  <div class="search-box-item"> -->
+  Budget:
+  <input id="ex6" type="text"
+  name="price_range"
+  data-provide="slider"
+  data-slider-min="0"
+  data-slider-max="500000"
+  data-slider-range="true"
+  data-slider-step="10000"
+  data-slider-value="[150000,350000]"
+  data-slider-tooltip="hide"
+  data-slider-handle="square"
+  "/>
+  <span id="budgetReadout"><span id="ex6SliderVal">£150k - £350k </span></span>
+<!--   </div>
+  <div class="search-box-item"> -->
+  <%= submit_tag "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>
+</div>
 
 <div class="text-center">
   <div class="row">
