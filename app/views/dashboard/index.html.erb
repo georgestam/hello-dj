@@ -1,13 +1,13 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg');">
+<div class="banner" id='banner_dashboard' style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg');">
 </div>
 
 
 <div class="container padded">
   <div class='text-center'>
-     <p> Welcome <%= current_user.email %>!</p>
+     <p> <strong> Welcome  <%= current_user.email %>! </strong></p>
   </div>
 
-  <h4>Your Bookings as a user:</h4>
+  <p> <strong> Your Bookings as a user: </strong></p>
     <% current_user.bookings.each do |booking| %>
 
       <% card_photo = booking.profile.photo.file ? cl_image_path(booking.profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
@@ -16,26 +16,31 @@
       <div class="product">
         <div class='product-upvote'>
           <!-- <div class="product-arrow"></div> -->
-          <div class='product-count'><%= booking.date %></div>
+        <div class='product-count'><%= booking.date %></div>
         </div>
         <img src='<%= card_photo %>' class="product-image hidden-xs">
         <div class='product-body'>
           <h3><%= booking.profile.dj_name %></h3>
           <p>Booking start on <strong> <%= booking.date %> </strong> at <strong> <%= booking.time %> </strong> </p>
-          <p><%= booking.booking_address %></p>
+          <p><%= booking.booking_address.capitalize %></p>
         </div>
         <ul class="list-inline hidden-sm hidden-xs">
-          <li class = "product-controls"><a href=""><i class="fa fa-heart"></i></a></li>
+       <!--    <li class = "product-controls"><a href=""><i class="fa fa-heart"></i></a></li>
           <li class = "product-controls"><a href=""><i class="fa fa-share"></i></a></li>
-          <li class = "product-controls"><a href=""><i class="fa fa-star"></i></a></li>
-          <li><a href="#" class="btn btn-danger">Write Review!</a></li>
+          <li class = "product-controls"><a href=""><i class="fa fa-star"></i></a></li> -->
+        </ul>
+        <ul class="hidden-sm hidden-xs" id="crud-button">
+
+          <li>  <%= link_to "Write Review!", booking_path(booking), method: :delete, class: "btn btn-success btn-block" %> </li>
+          <li>  <%= link_to "edit", booking_path(booking), method: :delete, class: "btn btn-warning  btn-block" %> </li>
+          <li>  <%= link_to "cancel", booking_path(booking), method: :delete, class: "btn btn-danger btn-block" %> </li>
         </ul>
       </div>
 
       <% end %>
 
-  <% if current_user.profiles %>
-    <h4>Your Bookings as a DJ:</h4>
+  <% if current_user.profiles.any? %>
+    <p> <strong> Your Bookings as a DJ: </strong></p>
       <% current_user.profiles.each do |profile| %>
 
       <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
@@ -44,27 +49,35 @@
         <div class='product-upvote'>
           <!-- <div class="product-arrow"></div> -->
           <% profile.bookings.each do |booking| %>
-            <div class='product-count'><%= booking.date %></div>
-              </div>
-              <img src='<%= card_photo %>' class="product-image hidden-xs">
-              <div class='product-body'>
+            <div class='product-count'><%= booking.date %> </div>
+            </div>
+            <img src='<%= card_photo %>' class="product-image hidden-xs">
+            <div class='product-body'>
                 <h3><%= booking.profile.dj_name %></h3>
                 <p>Booking start on <strong> <%= booking.date %> </strong> at <strong> <%= booking.time %> </strong> </p>
-                <p><%= booking.booking_address %></p>
-              </div>
-           <ul class="list-inline hidden-sm hidden-xs">
-            <li class = "product-controls"><a href=""><i class="fa fa-heart"></i></a></li>
-            <li class = "product-controls"><a href=""><i class="fa fa-share"></i></a></li>
-            <li class = "product-controls"><a href=""><i class="fa fa-star"></i></a></li>
-            <li><a href="#" class="btn btn-danger">Write Review!</a></li>
-          </ul>
+                <p><%= booking.booking_address.capitalize %></p>
             </div>
-        <% end %>
+        <ul class="list-inline hidden-sm hidden-xs">
+       <!--    <li class = "product-controls"><a href=""><i class="fa fa-heart"></i></a></li>
+          <li class = "product-controls"><a href=""><i class="fa fa-share"></i></a></li>
+          <li class = "product-controls"><a href=""><i class="fa fa-star"></i></a></li> -->
+        </ul>
+        <ul class="hidden-sm hidden-xs" id="crud-button">
+         <li><a href="#" class="btn btn-success btn-block">Paid!</a></li>
+
+         <li>  <%= link_to "cancel", booking_path(booking), method: :delete, class: "btn btn-primary" %> </li>
+
+
+        </ul>
+      </div>
       <% end %>
+    <% end %>
+     </div>
   <% else %>
     <p>You are currently not regestered as a DJ.<p>
-    <%= link_to "Create DJ Profile", new_profile_path  , :class => "btn btn-danger" %>
+    <%= link_to "Create DJ Profile", new_profile_path  , :class => "btn btn-success" %>
   <% end %>
+  </div>
 
-</div>
+
 

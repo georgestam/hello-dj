@@ -68,6 +68,8 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
+    flash[:notice] = "Your DJ profile has been deleted"
+    redirect_to root_path
   end
 
 private
