@@ -4,6 +4,37 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+    <% @profiles.each do |profile| %>
+    <% distance_away = Geocoder::Calculations.distance_between(Geocoder.coordinates(params[:city]), [profile.user.latitude,profile.user.longitude ]) %>
+      <% if params[:max_price] && params[:max_price] != "" && params[:city] && params[:city] != "" %>
+        <% if profile.price_hour < params[:max_price].to_i && distance_away <100 %>
+      <div class="col-xs-12 col-sm-4 padding-images">
+        <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= card_photo %>');">
+          <div class="card-description">
+            <p><%= profile.dj_name %></p>
+          </div>
+          <%= link_to "", profile_path(profile), class: 'card-link' %>
+        </div>
+      </div>
+    <% end %>
+    <% else %>
+      <div class="col-xs-12 col-sm-4 padding-images">
+        <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
+        <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= card_photo %>');">
+          <div class="card-description">
+            <p><%= profile.dj_name %></p>
+          </div>
+          <%= link_to "", profile_path(profile), class: 'card-link' %>
+        </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
 <!-- for debugging -->
 
 
@@ -12,8 +43,7 @@
 city:<%= params[:city] %>
 max price:<%= params[:max_price] %> -->
 <!-- for debugging -->
-<div class="container padded">
-<div id="map" style="width: 100%; height: 200px;">
+<div id="map" style="width: 100%; height: 300px;">
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
     $(document).on('ready', function() {
@@ -32,47 +62,8 @@ max price:<%= params[:max_price] %> -->
   <% end %>
 <% end %>
 </div>
-</div>
 
 
 
 
-
-
-<div class="container padded">
-  <div class="row">
-    <% @profiles.each do |profile| %>
-    <% distance_away = Geocoder::Calculations.distance_between(Geocoder.coordinates(params[:city]), [profile.user.latitude,profile.user.longitude ]) %>
-
-      <% if params[:max_price] && params[:max_price] != "" && params[:city] && params[:city] != "" %>
-        <% if profile.price_hour < params[:max_price].to_i && distance_away <100 %>
-          <div class="col-xs-12 col-sm-4">
-
-
-
-Distance away: <%= distance_away %>
-
-
-
-          <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
-            <div class="card text-center" style="background-image: url('<%= card_photo %>');">
-            </div>
-            <div class="row">
-            <p class="card-title text-center"><%=link_to profile.dj_name, profile_path(profile)%></p>
-            </div>
-          </div>
-        <% end %>
-      <% else %>
-        <div class="col-xs-12 col-sm-4">
-          <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
-          <div class="card text-center" style="background-image: url('<%= card_photo %>');">
-          </div>
-          <div class="row">
-            <p class="card-title text-center"><%=link_to profile.dj_name, profile_path(profile)%></p>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-</div>
 
