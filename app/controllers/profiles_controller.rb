@@ -7,15 +7,18 @@ class ProfilesController < ApplicationController
 
   def index
 
+      # <% distance_away = Geocoder::Calculations.distance_between(Geocoder.coordinates(@your_location), [profile.user.latitude,profile.user.longitude ]) %>
+
+      #   <% if profile.price_hour < @max_price && profile.price_hour > @min_price && distance_away < @max_distance.to_f  %>
+
     # extract search parameters and use defualts if not entered by user
     @min_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[0] : 0
     @max_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[1] : 10000000000
     @max_distance = params[:max_distance] && params[:max_distance] !="" ? params[:max_distance] : 10000000000
     @your_location = params[:your_location] && params[:your_location] !="" ? params[:your_location] : "London"
 
-    @profiles = Profile.all
-
-    @profiles.to_a.reject! { |profile| profile.user.latitude.nil? }
+    user_ids = User.near(@your_location, @max_distance).map(&:id)
+    @profiles = Profile.where(price_hour: @min_price..@max_price, user_id: user_ids)
 
     @hash = Gmaps4rails.build_markers(@profiles) do |profile, marker|
       marker.lat profile.user.latitude
