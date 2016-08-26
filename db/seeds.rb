@@ -30,7 +30,7 @@ djs = [
     photo: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1472146120/rqeirwvllcgkvcxomxgd.jpg",
     bio: "Martin Garrix is a Dutch DJ, record producer and musician. He is currently ranked number 3 on DJ Mag. In 2016, he founded the label STMPD RCRDS months after leaving Spinnin' Records.",
     price_hour: 100000,
-    soundcloud_link: "https://soundcloud.com/hardwell/martingarrix"
+    soundcloud_link: "hhttps://soundcloud.com/martingarrix"
   },
    {
     dj_name: "Armin Van Buuren",
