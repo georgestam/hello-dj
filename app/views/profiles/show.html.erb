@@ -54,6 +54,9 @@
         <% @reviews.each do |review| %>
         <ul>
           <% review.rating.times do |i|  %>
+          <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+          <% end %>
+          <% 5-review.rating.times do |i|  %>
           <i class="fa fa-star" aria-hidden="true"></i>
           <% end %>
           <div class="card" id="reviews_card">
