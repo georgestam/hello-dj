@@ -1,0 +1,12 @@
+.search-box {
+  text-align: center;
+  margin: 10px;
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search-box-item {
+  margin: 10px;
+
+}
