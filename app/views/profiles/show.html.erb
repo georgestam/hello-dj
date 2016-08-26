@@ -32,8 +32,16 @@
       <h4> <strong>Price</strong> </h4>
         <p><%= @profile.price_hour %> £</p>
         <%= link_to "Book", new_profile_booking_path(@profile) , :class => "btn btn-success" %>
-        <p><% @profile.id %></p>
-        <p><% @profile.user.id %></p>
+
+        <% @reviews.each do |review| %>
+        <ul>
+          <% review.rating.times do |i|  %>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+          <li><%= review.description %></li>
+        </ul>
+        <% end %>
+
     </div>
     <div class="col-lg-6">
        <%=  @url_embed.html_safe %>
