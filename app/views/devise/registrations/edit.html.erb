@@ -21,17 +21,14 @@
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
   </div>
-         <div class="form-actions">
+         <div class="form-actions form-inline">
     <%= f.button :submit, "Update" %>
+    <%= link_to "Back", :back, class: "btn btn-primary" %>
+    <%= link_to "Cancel my account", registration_path(resource_name), class: "btn btn-danger", data: { confirm: "Are you sure?" }, method: :delete %>
   </div>
 <% end %>
-        </br>
-        <h3>Cancel my account</h3>
-
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
-        </br>
+</br>
+</br>
       </div>
     </div>
   </div>
