@@ -53,7 +53,9 @@ class ProfilesController < ApplicationController
 
     # .slice(0).slice(-1)
 
-    @reviews = Review.all
+    # @reviews = Review.all
+
+    @reviews = Review.where(booking_id: Booking.where(profile: current_user.profiles).pluck(:id))
     # @reviews = Review.where(profile: @profile.bookings)
 
     # Booking.where(profile: current_user.profiles)
