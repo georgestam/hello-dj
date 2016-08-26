@@ -25,7 +25,7 @@
   </div>
   </br>
   </br>
-  <div class="row">
+<!--   <div class="row">
     <div class="col-lg-6" id="description">
       <h4> <strong>Bio</strong> </h4>
         <p><%= @profile.bio %></p>
@@ -64,22 +64,67 @@
         <% end %>
       </div>
     </div>
-  </div>
-
-
-
-
-
-
+  </div> -->
 
 
 
 <div class="container" style="padding-bottom:10px;">
+<div class="row">
+<div class="col-xs-6">
+<h4> <strong>Bio</strong> </h4>
+        <p><%= @profile.bio %></p>
+      <h4> <strong>Price</strong> </h4>
+        <p><%= @profile.price_hour %> £</p>
+        <%= link_to "Book", new_profile_booking_path(@profile) , :class => "btn btn-success" %>
+        <p><% @profile.id %></p>
+        <p><% @profile.user.id %></p>
+</div>
+<div class="col-xs-6">
+<%=  @url_embed.html_safe %>
+</div>
+</div>
+</div>
+
+
+<div class="container" style="padding-bottom:10px;">
+<div class="row">
+<div class="col-xs-12">
+<% @reviews.each do |review| %>
+        <ul style="padding: 0; list-style-type: none;">
+
+          <div class="card" id="reviews_card">
+          <div class="card-description">
+
+          <li>
+<% review.rating.times do |i|  %>
+          <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
+          <% end %>
+          <% (5-review.rating).times do |i|  %>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <% end %>
+
+          <%= review.description %></li>
+          </div>
+          <a class="card-link" href="#" ></a>
+        </div>
+
+
+        </ul>
+        <% end %>
+</div>
+</div>
+</div>
+
+
+<div class="container" style="padding-bottom:10px;">
+<div class="row">
+<div class="col-xs-12">
   <div id="map" style="width: 100%; height: 300px;">
     <%= render 'shared/map' %>
   </div>
 </div>
-
+</div>
+</div>
 
 
 </div>
