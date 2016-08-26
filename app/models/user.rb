@@ -9,12 +9,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-
-  validates :full_name, presence: true, on: :update
   validates :email, presence: true, uniqueness: true
   validates_format_of :email,:with => /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/
 
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+
+  mount_uploader :photo, PhotoUploader
 
 end
