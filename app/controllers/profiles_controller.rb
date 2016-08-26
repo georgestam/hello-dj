@@ -24,6 +24,11 @@ class ProfilesController < ApplicationController
       marker.lat profile.user.latitude
       marker.lng profile.user.longitude
       marker.infowindow profile.dj_name
+      marker.picture({
+        url: ActionController::Base.helpers.image_path("map_icon.png"),
+        width: 64,
+        height: 64
+      })
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
     end
   end

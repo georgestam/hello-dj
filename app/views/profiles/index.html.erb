@@ -6,31 +6,16 @@
 
 
 
-<!-- for debugging - or we could turn this info into something that looks nice -->
+<%= render 'shared/search', remote: true %>
+
+<!--
 <p>
 You searched within <%= @max_distance %> km of <%= @your_location %> With a price of <%= @min_price %> to <%= @max_price %>
 </p>
-<!-- for debugging -->
+-->
 
-<%= render 'shared/search' %>
-
-<div class="container padded">
-  <div class="row">
-    <% @profiles.each do |profile| %>
-      <% distance_away = Geocoder::Calculations.distance_between(Geocoder.coordinates(@your_location), [profile.user.latitude,profile.user.longitude ]) %>
-
-      <div class="col-xs-12 col-sm-4">
-        <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
-        <div class="card text-center" style="background-image: url('<%= card_photo %>');">
-          <div class="badge badge-blue"><%= distance_away.round %>km</div>
-          <div class="badge badge-red lower">£<%= profile.price_hour/1000 %>k</div>
-        </div>
-        <div class="row">
-          <p class="card-title text-center"><%=link_to profile.dj_name, profile_path(profile)%></p>
-        </div>
-      </div>
-    <% end %>
-  </div>
+<div id="results">
+  <%= render 'results' %>
 </div>
 
 <div class="container padded">
@@ -38,12 +23,4 @@ You searched within <%= @max_distance %> km of <%= @your_location %> With a pric
     <%= render 'shared/map' %>
   </div>
 </div>
-</br>
-</br>
-</br>
-
-
-
-
-
 

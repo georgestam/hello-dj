@@ -1,7 +1,7 @@
 <!-- Search form -->
 <div class="search-box">
 
-<%= form_tag(profiles_path, :method => "get", id: "search-form", class: "form-inline") do %>
+<%= form_tag(profiles_path, :method => "get", id: "search-form", class: "form-inline", remote: remote) do %>
   <div class="search-box-item">
   <%= text_field_tag :your_location, nil, :placeholder => "London", :class => "form-control" %>
   <%= select_tag :max_distance, options_for_select([0,10,25,50,100,250]), :prompt => "Search Distance", :class => "form-control"  %>
