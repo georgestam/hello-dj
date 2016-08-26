@@ -53,6 +53,12 @@ class ProfilesController < ApplicationController
 
     # .slice(0).slice(-1)
 
+    @reviews = Review.all
+    # @reviews = Review.where(profile: @profile.bookings)
+
+    # Booking.where(profile: current_user.profiles)
+
+    # @popular_profiles = Profile.where.not(photo: nil).order(created_at: :asc).limit(6).reverse
 
   end
 
@@ -81,6 +87,8 @@ class ProfilesController < ApplicationController
 
   def destroy
     @profile.destroy
+    flash[:notice] = "Your DJ profile has been deleted"
+    redirect_to root_path
   end
 
 private

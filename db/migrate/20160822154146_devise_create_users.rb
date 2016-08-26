@@ -6,7 +6,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :encrypted_password, null: false, default: ""
 
       # Added by us to customise user model
-      t.string :full_name
       t.string :address
       t.boolean :dj
       t.string :user_picture

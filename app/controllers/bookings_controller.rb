@@ -24,17 +24,19 @@ class BookingsController < ApplicationController
     @booking.profile = Profile.find(params[:profile_id])
     @booking.user = current_user
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to dashboard_path
     else
       render :new
     end
   end
 
   def show
+     redirect_to dashboard_path
   end
 
   def destroy
     @booking.destroy
+    redirect_to dashboard_path
   end
 
 private
