@@ -14,32 +14,36 @@
 
 
       <div class="product">
+
         <div class='product-upvote'>
           <!-- <div class="product-arrow"></div> -->
-        <div class='product-count'><%= booking.date %></div>
+          <div class='product-count'><%= booking.date %></div>
         </div>
+
         <img src='<%= card_photo %>' class="product-image hidden-xs">
+
         <div class='product-body'>
           <h3><%= booking.profile.dj_name %></h3>
           <p>Booking start on <strong> <%= booking.date %> </strong> at <strong> <%= booking.time %> </strong> </p>
           <p><%= booking.booking_address.capitalize %></p>
         </div>
-        <ul class="list-inline hidden-sm hidden-xs">
-       <!--    <li class = "product-controls"><a href=""><i class="fa fa-heart"></i></a></li>
-          <li class = "product-controls"><a href=""><i class="fa fa-share"></i></a></li>
-          <li class = "product-controls"><a href=""><i class="fa fa-star"></i></a></li> -->
-        </ul>
-        <ul class="hidden-sm hidden-xs" id="crud-button">
 
-          <li>  <%= link_to "Write Review!", booking_path(booking), method: :delete, class: "btn btn-success btn-block" %> </li>
-          <li>  <%= link_to "edit", booking_path(booking), method: :delete, class: "btn btn-warning  btn-block" %> </li>
+        <ul class="hidden-sm hidden-xs" id="crud-button">
+          <% if booking.reviews.any? %>
+              <li>  <%= link_to "See Review", profile_path(booking.profile), class: "btn btn-primary btn-block" %> </li>
+          <% else %>
+              <li>  <%= link_to "Write Review", new_booking_review_path(booking), class: "btn btn-success btn-block" %> </li>
+          <% end  %>
+          <li>  <%= link_to "edit", edit_booking_path(booking), class: "btn btn-warning  btn-block" %> </li>
           <li>  <%= link_to "cancel", booking_path(booking), method: :delete, class: "btn btn-danger btn-block" %> </li>
         </ul>
+
+         <%= link_to "", profile_path(booking.profile) %>
       </div>
+    <% end %>
 
-      <% end %>
+  <% if current_user.profiles.any? && Booking.where(profile: current_user.profiles).any? %>
 
-  <% if current_user.profiles.any? %>
     <p> <strong> Your Bookings as a DJ: </strong></p>
       <% current_user.profiles.each do |profile| %>
 
@@ -73,8 +77,11 @@
       <% end %>
     <% end %>
      </div>
+  <% elsif current_user.profiles.any?  %>
+    <p> <strong> You do not have bookings as DJ </strong> <p>
+
   <% else %>
-    <p>You are currently not regestered as a DJ.<p>
+    <p> <strong> You are currently not regestered as a DJ. </strong><p>
     <%= link_to "Create DJ Profile", new_profile_path  , :class => "btn btn-success" %>
   <% end %>
   </div>

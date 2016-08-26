@@ -1,13 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-sm-offset-3">
-      <h3>Edit Booking</h3>
+      <h3>Edit Booking for <%= @booking.profile.dj_name %> </h3>
       <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path(@booking.profile.photo) %>');">
       </div>
-      <%= render 'form' %>
+      <%= render 'form', resource: @booking %>
     </div>
   </div>
 </div>
 </br>
 </br>
+
 

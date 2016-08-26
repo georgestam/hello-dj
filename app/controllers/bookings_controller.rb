@@ -31,6 +31,7 @@ class BookingsController < ApplicationController
   end
 
   def show
+     redirect_to dashboard_path
   end
 
   def destroy
