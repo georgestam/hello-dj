@@ -16,8 +16,8 @@
       <div class="col-xs-12 col-sm-4 padding-images">
         <% card_photo = profile.photo.file ? cl_image_path(profile.photo) : 'http://res.cloudinary.com/dvgxgsxyc/image/upload/v1471948252/dj_home.jpg' %>
         <div class="card text-center" style="background-image: url('<%= card_photo %>');">
-          <div class="badge badge-blue"><%= distance_away.round %>km</div>
-          <div class="badge badge-red lower">£<%= profile.price_hour/1000 %>k</div>
+          <div class="card-category"><%= distance_away.round %>km</div>
+          <div class="card-user">£<%= profile.price_hour/1000 %>k</div>
           <div class="card-description">
               <p><%= profile.dj_name %></p>
             </div>
