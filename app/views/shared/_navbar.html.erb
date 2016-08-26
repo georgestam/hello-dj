@@ -14,7 +14,7 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
 
-          <% avatar_url = current_user.photo.file ? cl_image_path(current_user.photo,  width: 40, height: 40, crop: :thumb, gravity: :face) : (current_user.facebook_picture_url ||"http://placehold.it/30x30") %>
+          <% avatar_url = current_user.photo.file ? cl_image_path(current_user.photo,  width: 50, height: 50, gravity: :face) : (current_user.facebook_picture_url ||"http://placehold.it/30x30") %>
           <%= image_tag avatar_url, class: "avatar-bordered dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
 
