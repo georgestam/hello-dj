@@ -1,4 +1,5 @@
 class Profile < ApplicationRecord
+
   belongs_to :user
   has_many :bookings
 
@@ -7,8 +8,8 @@ class Profile < ApplicationRecord
   validates :bio, presence: true
   validates :price_hour, presence: true
   validates :photo, presence: true
-#   validates :soundcloud_link, format: { with: ,
-# message: "Wrong URL" }
+  validates :soundcloud_link, format: { with: /https:\/\/soundcloud.com\/\w+$/,
+message: "Must be in the form https:/soundcloud.com/YourUsername", multiline: true }
 
   mount_uploader :photo, PhotoUploader
 

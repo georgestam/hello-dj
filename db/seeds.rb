@@ -10,6 +10,7 @@ require 'faker'
 
 Profile.destroy_all
 
+
 djs = [
   {
     dj_name: "Dimitri Vegas & Like Mike",
@@ -30,7 +31,7 @@ djs = [
     photo: "http://res.cloudinary.com/dvgxgsxyc/image/upload/v1472146120/rqeirwvllcgkvcxomxgd.jpg",
     bio: "Martin Garrix is a Dutch DJ, record producer and musician. He is currently ranked number 3 on DJ Mag. In 2016, he founded the label STMPD RCRDS months after leaving Spinnin' Records.",
     price_hour: 100000,
-    soundcloud_link: "https://soundcloud.com/hardwell/martingarrix"
+    soundcloud_link: "https://soundcloud.com/martingarrix"
   },
    {
     dj_name: "Armin Van Buuren",
@@ -119,11 +120,14 @@ djs = [
 
   ]
 
+
+  i = 0
   djs.each do |dj|
     user = User.create!(
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    address: ["TS18 1RH","MK19 6DX","PL33 9AP","BN9 9XE","OX28 6LF","IV49 9AQ","B15 2RU","EH20 9SZ","BT57 8RP","WA3 6GR","IP22 1LJ","LS17 6LJ","LL44 2EA","AB21 9PN","CO8 5LL","DN9 1LG","PH15 2NJ","YO90 1UU"].sample)
+    address: ["TS18 1RH","MK19 6DX","PL33 9AP","BN9 9XE","OX28 6LF","IV49 9AQ","B15 2RU","EH20 9SZ","BT57 8RP","WA3 6GR","IP22 1LJ","LS17 6LJ","LL44 2EA","AB21 9PN","CO8 5LL","DN9 1LG","PH15 2NJ","YO90 1UU"][i])
+    i += 1
     photo_url = dj.delete(:photo)
     profile = Profile.new(dj)
     profile.user = user
