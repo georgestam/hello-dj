@@ -91,16 +91,19 @@
 <div class="col-xs-12">
 <% @reviews.each do |review| %>
         <ul style="padding: 0; list-style-type: none;">
-          <% review.rating.times do |i|  %>
+
+          <div class="card" id="reviews_card">
+          <div class="card-description">
+
+          <li>
+<% review.rating.times do |i|  %>
           <i class="fa fa-star" style="color:#cccc00;" aria-hidden="true"></i>
           <% end %>
           <% (5-review.rating).times do |i|  %>
           <i class="fa fa-star" aria-hidden="true"></i>
           <% end %>
-          <div class="card" id="reviews_card">
-          <div class="card-description">
 
-          <li><%= review.description %></li>
+          <%= review.description %></li>
           </div>
           <a class="card-link" href="#" ></a>
         </div>
