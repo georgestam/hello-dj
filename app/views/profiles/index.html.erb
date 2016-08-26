@@ -6,20 +6,13 @@
 
 
 
-
-
 <!-- for debugging - or we could turn this info into something that looks nice -->
 <p>
 You searched within <%= @max_distance %> km of <%= @your_location %> With a price of <%= @min_price %> to <%= @max_price %>
 </p>
 <!-- for debugging -->
 
-
-
-
-
-
-
+<%= render 'shared/search' %>
 
 <div class="container padded">
   <div class="row">
@@ -42,23 +35,7 @@ You searched within <%= @max_distance %> km of <%= @your_location %> With a pric
 
 <div class="container padded">
   <div id="map" style="width: 100%; height: 300px;">
-  <% content_for(:after_js) do %>
-    <script>
-      $(document).on('ready', function() {
-        var handler = Gmaps.build('Google');
-        handler.buildMap({ provider: { scrollwheel: false, zoomControl: false }, internal: { id: 'map' } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(2);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);
-          }
-        });
-      });
-    </script>
-  <% end %>
+    <%= render 'shared/map' %>
   </div>
 </div>
 </br>

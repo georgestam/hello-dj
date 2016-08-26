@@ -13,8 +13,8 @@ class ProfilesController < ApplicationController
 
     # extract search parameters and use defualts if not entered by user
     @min_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[0] : 0
-    @max_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[1] : 10000000000
-    @max_distance = params[:max_distance] && params[:max_distance] !="" ? params[:max_distance] : 10000000000
+    @max_price = params[:price_range] ? params[:price_range].split(",").map(&:to_i)[1] : 1000000
+    @max_distance = params[:max_distance] && params[:max_distance] !="" ? params[:max_distance] : 1000
     @your_location = params[:your_location] && params[:your_location] !="" ? params[:your_location] : "London"
 
     user_ids = User.near(@your_location, @max_distance).map(&:id)
