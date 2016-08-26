@@ -18,8 +18,9 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'faker'
 gem 'cloudinary', '1.1.0'
-gem  'soundcloud'
+gem 'soundcloud'
 gem 'carrierwave'
+gem 'omniauth-facebook'
 gem "geocoder"
 gem "coffee-rails"
 gem "gmaps4rails"

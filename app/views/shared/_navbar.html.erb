@@ -14,12 +14,8 @@
       <div class="navbar-wagon-item">
         <div class="dropdown">
 
-          <% avatar_photo = current_user.photo.file ? cl_image_path(current_user.photo, :transformation=>[
-  {:width=>40, :height=>40, :gravity=>"face", :radius=>"max", :crop=>"thumb"},
-  {:width=>20}
-  ]) : 'http://placehold.it/50x50' %>
-
-          <%= image_tag(avatar_photo, class: "avatar-bordered dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown",) %>
+          <% avatar_url = current_user.photo.file ? cl_image_path(current_user.photo,  width: 40, height: 40, crop: :thumb, gravity: :face) : (current_user.facebook_picture_url ||"http://placehold.it/30x30") %>
+          <%= image_tag avatar_url, class: "avatar-bordered dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
 
 
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
